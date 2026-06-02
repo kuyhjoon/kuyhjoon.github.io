@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="신뢰받는 시스템을 만드는 Java 백엔드 개발자 손준혁의 포트폴리오"/>
+<meta name="keywords" content="Java,Spring Boot,백엔드 개발자,Backend Developer,Spring Security,RESTful API,AOP,State Machine,AWS,Docker"/>
+<meta property="og:title" content="손준혁 | Java Backend Developer"/>
+<meta property="og:type" content="website"/>
+<title>손준혁 | Backend Developer</title>
+<script>(function(){var d=document.documentElement,m=window.matchMedia('(prefers-color-scheme:dark)');d.setAttribute('data-theme',m.matches?'dark':'light');})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ══ LIGHT ══ */
+:root{
+  --font:'Inter',-apple-system,sans-serif;--display:'Barlow Condensed',sans-serif;
+  --mono:'JetBrains Mono','Consolas',monospace;--r:10px;--w:1100px;
+  --t:#0f172a;--m:#475569;--d:#94a3b8;
+  --nav-bg:rgba(248,250,252,.96);--nav-bdr:rgba(0,0,0,.09);--nav-logo:#0369a1;--nav-link:#64748b;
+  --s-hero:#f8fafc;--s-about:#fffbeb;--s-met:#eff8ff;--s-proj:#f5f3ff;
+  --s-skill:#f0fdf4;--s-car:#eef2ff;--s-edu:#ecfeff;--s-con:#eff8ff;--s-foot:#e2e8f0;
+  --card:#fff;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.04);
+  --shadow-h:0 6px 20px rgba(0,0,0,.12);--divider:rgba(0,0,0,.08);
+  --h-name:#0f172a;--h-r1:rgba(3,105,161,.08);--h-r2:rgba(67,56,202,.06);
+  --badge-c:#059669;--badge-bg:rgba(5,150,105,.08);--badge-b:rgba(5,150,105,.25);
+  --a1:#0369a1;--a1-bg:rgba(3,105,161,.08);--a1-b:rgba(3,105,161,.2);--a1-g:linear-gradient(90deg,#0369a1,#0284c7);
+  --a2:#6d28d9;--a2-bg:rgba(109,40,217,.08);--a2-b:rgba(109,40,217,.18);--a2-res:#5b21b6;--a2-h:rgba(109,40,217,.5);
+  --a3:#047857;--a3-bg:rgba(4,120,87,.07);--a3-b:rgba(4,120,87,.2);--a3-cb:rgba(4,120,87,.4);
+  --a4:#3730a3;--a4-bg:rgba(55,48,163,.08);--a4-b:rgba(55,48,163,.18);--a4-line:rgba(55,48,163,.25);
+  --a5:#b45309;--a5-bg:rgba(180,83,9,.08);--a5-b:rgba(180,83,9,.2);
+  --a6:#0e7490;--a6-bg:rgba(14,116,144,.08);--a6-b:rgba(14,116,144,.18);--a6-g:linear-gradient(90deg,#0e7490,#0891b2);
+  --bp:#0369a1;--bp-t:#fff;--bo-b:rgba(0,0,0,.2);--bo-t:#0f172a;
+  --bdg-bg:rgba(0,0,0,.04);--bdg-b:rgba(0,0,0,.11);--bdg-t:#475569;
+  --st-c:#92400e;--st-bg:rgba(146,64,14,.06);--st-b:rgba(146,64,14,.3);
+  --arch-c:#5b21b6;--arch-bg:rgba(109,40,217,.07);--arch-b:rgba(109,40,217,.28);
+  --tgl-bg:rgba(0,0,0,.07);--tgl-c:#64748b;--tl-c:#334155;--tl-m:rgba(55,48,163,.35);
+}
+/* ══ DARK ══ */
+[data-theme="dark"]{
+  --t:#dde8f2;--m:#8fa4bb;--d:#4e6070;
+  --nav-bg:rgba(5,13,26,.94);--nav-bdr:rgba(255,255,255,.06);--nav-logo:#38bdf8;--nav-link:#8fa4bb;
+  --s-hero:#050d1a;--s-about:#16120a;--s-met:#091728;--s-proj:#0d111a;
+  --s-skill:#081812;--s-car:#0c0b1e;--s-edu:#061618;--s-con:#091728;--s-foot:#050d1a;
+  --card:#0d2040;--shadow:none;--shadow-h:none;--divider:rgba(255,255,255,.06);
+  --h-name:#fff;--h-r1:rgba(56,189,248,.10);--h-r2:rgba(99,102,241,.07);
+  --badge-c:#4ade80;--badge-bg:rgba(74,222,128,.07);--badge-b:rgba(74,222,128,.22);
+  --a1:#38bdf8;--a1-bg:rgba(56,189,248,.10);--a1-b:rgba(56,189,248,.14);--a1-g:linear-gradient(90deg,#38bdf8,#0ea5e9);
+  --a2:#a78bfa;--a2-bg:rgba(167,139,250,.10);--a2-b:rgba(167,139,250,.12);--a2-res:#c4b5fd;--a2-h:rgba(167,139,250,.5);
+  --a3:#34d399;--a3-bg:rgba(52,211,153,.07);--a3-b:rgba(52,211,153,.15);--a3-cb:rgba(52,211,153,.38);
+  --a4:#818cf8;--a4-bg:rgba(129,140,248,.08);--a4-b:rgba(129,140,248,.15);--a4-line:rgba(129,140,248,.2);
+  --a5:#fbbf24;--a5-bg:rgba(251,191,36,.08);--a5-b:rgba(251,191,36,.2);
+  --a6:#22d3ee;--a6-bg:rgba(34,211,238,.08);--a6-b:rgba(34,211,238,.14);--a6-g:linear-gradient(90deg,#22d3ee,#06b6d4);
+  --bp:#38bdf8;--bp-t:#04101e;--bo-b:rgba(255,255,255,.18);--bo-t:#dde8f2;
+  --bdg-bg:rgba(255,255,255,.04);--bdg-b:rgba(255,255,255,.1);--bdg-t:#8fa4bb;
+  --st-c:#fbbf24;--st-bg:rgba(251,191,36,.06);--st-b:rgba(251,191,36,.28);
+  --arch-c:#c4b5fd;--arch-bg:rgba(167,139,250,.08);--arch-b:rgba(167,139,250,.3);
+  --tgl-bg:rgba(255,255,255,.07);--tgl-c:#8fa4bb;--tl-c:#8fa4bb;--tl-m:rgba(129,140,248,.35);
+}
+
+/* ══ TRANSITIONS ══ */
+html{scroll-behavior:smooth}
+body,nav,section,footer,
+.sc,.pc,.pc-feat,.pc-feat-l,.cc,.sb,.bdg,.cert,.trait,.west-card,.score-card,.edu-item,
+.hero-name,.badge,.stitle,.kicker,.tl-co,.tl-role,.tl-p,.sc-n,.sc-l,.sc-s,
+.pc-name,.pc-period,.pc-desc,.pc-tag,.res,.skill-cat,.cc-val,.cc-hint,.cc-type,
+.nav-logo,.hero-ttl,.hero-desc,.tl-ul li,.about-text,.trait-lbl,.trait-txt,
+.edu-school,.edu-deg,.edu-per,.cert-nm,.cert-org,.score-num,.west-title,.west-det,
+#footer-main,#theme-toggle{
+  transition:background-color .3s ease,color .25s ease,border-color .28s ease,box-shadow .3s ease;
+}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+/* ══ CURSOR ══ */
+.cursor{display:inline-block;width:2px;height:.82em;background:var(--a1);vertical-align:-.04em;animation:blink 1s step-end infinite;margin-left:1px;transition:background-color .3s}
+@keyframes blink{50%{opacity:0}}
+
+/* ══ BASE ══ */
+body{font-family:var(--font);color:var(--t);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.ctr{max-width:var(--w);margin:0 auto;padding:0 36px}
+.pad{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.kicker::before{content:'';display:block;width:28px;height:1.5px;background:currentColor}
+.stitle{font-family:var(--display);font-size:clamp(32px,4vw,46px);font-weight:900;letter-spacing:-.01em;line-height:1.05;margin-bottom:48px;color:var(--t)}
+
+/* ══ NAV ══ */
+#nav-main{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--nav-bdr)}
+.nav-i{display:flex;align-items:center;justify-content:space-between;max-width:var(--w);margin:0 auto;padding:0 36px;height:58px}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--nav-logo)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:12px;color:var(--nav-link);letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--a1)}
+#theme-toggle{background:var(--tgl-bg);border:none;color:var(--tgl-c);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;margin-left:4px;flex-shrink:0}
+#theme-toggle:hover{background:var(--a1-bg);color:var(--a1)}
+
+/* ══ HERO ══ */
+#section-hero{background:var(--s-hero);min-height:calc(100vh - 58px);position:relative;overflow:hidden;border-bottom:1px solid var(--divider)}
+#section-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 70% 45%,var(--h-r1) 0%,transparent 55%),radial-gradient(ellipse at 10% 85%,var(--h-r2) 0%,transparent 40%)}
+#section-hero .pad{min-height:calc(100vh - 58px);display:flex;flex-direction:column;justify-content:center;position:relative}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--badge-c);background:var(--badge-bg);border:1px solid var(--badge-b);padding:5px 14px;border-radius:100px;margin-bottom:30px}
+.badge::before{content:'';width:7px;height:7px;background:var(--badge-c);border-radius:50%}
+.hero-name{font-family:var(--display);font-size:clamp(66px,11vw,110px);font-weight:900;letter-spacing:-.035em;line-height:.92;color:var(--h-name);margin-bottom:16px}
+.hero-name span{color:var(--a1)}
+.hero-ttl{font-family:var(--mono);font-size:clamp(14px,1.8vw,18px);color:var(--m);margin-bottom:24px;min-height:1.6em}
+.hero-desc{font-size:16px;color:var(--m);max-width:520px;margin-bottom:44px;line-height:1.82}
+.hero-desc strong{color:var(--t)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid transparent;font-family:var(--font);transition:all .18s}
+.btn-p{background:var(--bp);color:var(--bp-t)}.btn-p:hover{opacity:.85}
+.btn-o{background:transparent;color:var(--bo-t);border-color:var(--bo-b)}.btn-o:hover{border-color:var(--a1);color:var(--a1)}
+
+/* ══ ABOUT (신설) ══ */
+#section-about{background:var(--s-about);border-bottom:1px solid var(--divider)}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:64px;align-items:start}
+.about-text{font-size:15.5px;color:var(--m);line-height:1.9}
+.about-text p+p{margin-top:16px}
+.about-text strong{color:var(--t)}
+.hl{color:var(--a5);font-style:normal}
+.traits{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.trait{background:var(--card);border:1px solid var(--a5-b);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.trait-icon{font-size:22px;margin-bottom:8px}
+.trait-lbl{font-family:var(--mono);font-size:10.5px;color:var(--a5);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.trait-txt{font-size:12px;color:var(--m);line-height:1.55}
+
+/* ══ METRICS (6개) ══ */
+#section-metrics{background:var(--s-met);border-bottom:1px solid var(--divider)}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sc{background:var(--card);border:1px solid var(--a1-b);border-radius:var(--r);padding:28px 24px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.sc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--a1-g)}
+.sc-n{font-family:var(--display);font-size:52px;font-weight:900;color:var(--a1);line-height:1;margin-bottom:8px}
+.sc-l{font-size:13.5px;color:var(--t);font-weight:500;margin-bottom:3px}
+.sc-s{font-size:11px;color:var(--d);font-family:var(--mono)}
+
+/* ══ PROJECTS (Featured + Grid) ══ */
+#section-projects{background:var(--s-proj);border-bottom:1px solid var(--divider)}
+.pf-row{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.pf-btn{font-family:var(--mono);font-size:11.5px;padding:6px 16px;border-radius:100px;border:1px solid var(--a2-b);background:transparent;color:var(--m);cursor:pointer;transition:all .18s}
+.pf-btn.active,.pf-btn:hover{background:var(--a2-bg);color:var(--a2);border-color:var(--a2)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* Featured card (가로형 대형) */
+.pc-feat{background:var(--card);border:1.5px solid var(--a2);border-radius:var(--r);display:grid;grid-template-columns:140px 1fr;grid-column:1/-1;overflow:hidden;box-shadow:var(--shadow);transition:border-color .2s,transform .2s,box-shadow .2s,background-color .3s}
+.pc-feat:hover{border-color:var(--a2-h);transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.pc-feat-l{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--a2-bg);border-right:1px solid var(--a2-b);padding:24px 12px;gap:6px;transition:background-color .3s,border-color .28s}
+.pc-feat-num{font-family:var(--display);font-size:64px;font-weight:900;color:var(--a2);line-height:1}
+.pc-feat-tag{font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--a2);opacity:.7}
+.pc-feat-r{padding:28px;display:flex;flex-direction:column;gap:14px}
+
+/* Standard card */
+.pc{background:var(--card);border:1px solid var(--a2-b);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);transition:border-color .2s,transform .2s,box-shadow .2s,background-color .3s}
+.pc:hover{border-color:var(--a2-h);transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.pc.solo{grid-column:1/-1}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pc-name{font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:.01em;color:var(--t)}
+.pc-period{font-size:11px;color:var(--d);font-family:var(--mono);margin-top:3px}
+.pc-tag{font-size:10.5px;font-family:var(--mono);white-space:nowrap;flex-shrink:0;background:var(--a2-bg);color:var(--a2);padding:3px 10px;border-radius:100px;border:1px solid var(--a2-b)}
+.pc-desc{font-size:13.5px;color:var(--m);line-height:1.68;flex:1}
+.bdgs{display:flex;flex-wrap:wrap;gap:6px}
+.bdg{font-size:11px;font-family:var(--mono);background:var(--bdg-bg);border:1px solid var(--bdg-b);color:var(--bdg-t);padding:3px 9px;border-radius:4px}
+.pc-res{border-top:1px solid var(--a2-b);padding-top:13px;display:flex;flex-direction:column;gap:5px}
+.res{font-size:13px;color:var(--a2-res);display:flex;align-items:flex-start;gap:8px}
+.res::before{content:'▸';flex-shrink:0;color:var(--a2)}
+
+/* ══ SKILLS ══ */
+#section-skills{background:var(--s-skill);border-bottom:1px solid var(--divider)}
+.skill-rows{display:flex;flex-direction:column;gap:20px}
+.skill-row{display:flex;align-items:flex-start;gap:28px}
+.skill-cat{font-family:var(--mono);font-size:10.5px;color:var(--d);width:84px;flex-shrink:0;padding-top:6px;text-align:right;text-transform:uppercase;letter-spacing:.08em}
+.sbs{display:flex;flex-wrap:wrap;gap:8px}
+.sb{font-size:12.5px;font-family:var(--mono);background:var(--bdg-bg);border:1px solid var(--a3-b);color:var(--t);padding:5px 14px;border-radius:6px;transition:all .18s}
+.sb:hover{background:var(--a3-bg);border-color:var(--a3-cb);color:var(--a3)}
+.sb.core{border-color:var(--a3-cb);color:var(--a3);background:var(--a3-bg)}
+.sb.arch{border-color:var(--arch-b);color:var(--arch-c);background:var(--arch-bg)}
+.sb.study{border-color:var(--st-b);color:var(--st-c);background:var(--st-bg)}
+
+/* ══ CAREER ══ */
+#section-career{background:var(--s-car);border-bottom:1px solid var(--divider)}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:5px;top:14px;bottom:14px;width:1px;background:var(--a4-line)}
+.tl-item{position:relative;margin-bottom:52px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:8px;width:12px;height:12px;background:var(--a4);border-radius:50%;border:2.5px solid var(--s-car);transition:background-color .3s,border-color .3s}
+.tl-item.now .tl-dot{box-shadow:0 0 0 3px var(--a4-b),0 0 14px var(--a4-b)}
+.tl-p{font-family:var(--mono);font-size:11px;color:var(--d);margin-bottom:4px}
+.tl-co{font-family:var(--display);font-size:23px;font-weight:800;color:var(--t)}
+.tl-role{font-family:var(--mono);font-size:12px;color:var(--a4);margin-bottom:12px}
+.tl-ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-ul li{font-size:13.5px;color:var(--tl-c);padding-left:16px;position:relative}
+.tl-ul li::before{content:'—';position:absolute;left:0;color:var(--tl-m)}
+
+/* ══ EDUCATION (신설) ══ */
+#section-education{background:var(--s-edu);border-bottom:1px solid var(--divider)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.edu-list{display:flex;flex-direction:column;gap:36px}
+.edu-item{padding-left:16px;border-left:2px solid var(--a6-b)}
+.edu-school{font-family:var(--display);font-size:21px;font-weight:800;color:var(--t)}
+.edu-deg{font-family:var(--mono);font-size:12px;color:var(--a6);margin:5px 0 3px}
+.edu-per{font-family:var(--mono);font-size:11px;color:var(--d);margin-bottom:8px}
+.edu-det{font-size:13px;color:var(--m);line-height:1.6}
+.edu-note{font-family:var(--mono);font-size:11px;color:var(--d);margin-top:5px;font-style:italic}
+.cred-col{display:flex;flex-direction:column;gap:24px}
+.cred-lbl{font-family:var(--mono);font-size:10px;color:var(--d);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cert{background:var(--card);border:1px solid var(--a6-b);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cert::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--a6-g)}
+.cert-nm{font-size:12px;color:var(--t);font-weight:600;line-height:1.4;margin-bottom:4px}
+.cert-org{font-family:var(--mono);font-size:10px;color:var(--d)}
+.cert-dt{font-family:var(--mono);font-size:10px;color:var(--a6);margin-top:2px}
+.score-row{display:flex;gap:10px}
+.score-card{background:var(--card);border:1px solid var(--a6-b);border-radius:var(--r);padding:16px 20px;box-shadow:var(--shadow);flex:1;position:relative;overflow:hidden}
+.score-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--a6-g)}
+.score-num{font-family:var(--display);font-size:40px;font-weight:900;color:var(--a6);line-height:1}
+.score-lbl{font-size:12.5px;color:var(--t);font-weight:500;margin-top:3px}
+.score-sub{font-size:10px;color:var(--d);font-family:var(--mono);margin-top:2px}
+.west-card{background:var(--card);border:1px solid var(--a6-b);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.west-title{font-size:14px;color:var(--t);font-weight:600;margin-bottom:3px}
+.west-sub{font-family:var(--mono);font-size:11px;color:var(--a6);margin-bottom:7px}
+.west-det{font-size:12.5px;color:var(--m);line-height:1.6}
+.award-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.award{font-size:12.5px;color:var(--m);padding-left:20px;position:relative;line-height:1.5}
+.award::before{content:'🏆';position:absolute;left:0;font-size:12px}
+
+/* ══ CONTACT ══ */
+#section-contact{background:var(--s-con);border-bottom:1px solid var(--divider)}
+.contact-sub{font-size:14.5px;color:var(--m);margin-top:-36px;margin-bottom:44px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cc{background:var(--card);border:1px solid var(--a1-b);border-radius:var(--r);padding:24px 20px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s,background-color .3s}
+.cc:hover{border-color:var(--a1);transform:translateY(-2px);box-shadow:var(--shadow-h)}
+.cc-icon{font-size:22px}
+.cc-type{font-family:var(--mono);font-size:10px;color:var(--d);letter-spacing:.1em;text-transform:uppercase}
+.cc-val{font-size:13px;color:var(--t);font-weight:600}
+.cc-hint{font-size:11px;color:var(--a1);font-family:var(--mono)}
+
+/* ══ FOOTER / TOAST / FOCUS ══ */
+#footer-main{background:var(--s-foot);border-top:1px solid var(--divider);padding:30px;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--d)}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--t);color:var(--card);padding:10px 20px;border-radius:8px;font-family:var(--mono);font-size:12.5px;opacity:0;transition:all .28s ease;z-index:999;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.btn:focus-visible,.pf-btn:focus-visible,#theme-toggle:focus-visible,.cc:focus-visible{outline:2px solid var(--a1);outline-offset:2px}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:768px){
+  .pad{padding:72px 0}.ctr{padding:0 20px}
+  .hero-name{font-size:58px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .traits{grid-template-columns:1fr 1fr}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:1fr}.pc.solo{grid-column:auto}
+  .pc-feat{grid-template-columns:1fr}.pc-feat-l{display:none}
+  .contact-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links a{display:none}
+  .skill-row{flex-direction:column;gap:8px}.skill-cat{width:auto;text-align:left}
+  .edu-grid{grid-template-columns:1fr;gap:40px}
+  .cert-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav-main">
+  <div class="nav-i">
+    <span class="nav-logo">// son.junhyuk</span>
+    <div class="nav-links">
+      <a href="#section-about">소개</a>
+      <a href="#section-projects">프로젝트</a>
+      <a href="#section-skills">기술</a>
+      <a href="#section-career">경력</a>
+      <a href="#section-education">학력</a>
+      <a href="#section-contact">연락처</a>
+      <button id="theme-toggle" aria-label="테마 전환">🌙</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ HERO · id:section-hero ══ -->
+<section id="section-hero">
+  <div class="ctr pad">
+    <div class="badge">구직 중 &nbsp;·&nbsp; Open to Opportunities</div>
+    <h1 class="hero-name">손준혁<span>.</span></h1>
+    <p class="hero-ttl"><span id="typing-text"></span><span class="cursor" aria-hidden="true"></span></p>
+    <p class="hero-desc">
+      <strong>작동하는 코드보다 신뢰받는 시스템을 만드는 개발자.</strong><br>
+      유전자 분석 장비 연동부터 ERP 자동화까지,<br>
+      도메인이 달라도 본질은 하나 — <strong>데이터가 안정적으로 흐르는 구조</strong>를 설계합니다.
+    </p>
+    <div class="hero-cta">
+      <a href="YOUR_RESUME.pdf" class="btn btn-p btn-resume" target="_blank" rel="noopener">📄 이력서 다운로드</a>
+      <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer" class="btn btn-o">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ABOUT · id:section-about (신설) · 배경: --s-about (amber) ══ -->
+<section id="section-about">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a5)">// 00. about</p>
+    <h2 class="stitle">소개</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>학부 졸업 후 <em class="hl">한미 대학생 연수(WEST) 프로그램</em>으로 미국 SearchForce, Inc.에서 1년간 근무하며 데이터 분석 업무로 커리어를 시작했습니다. 귀국 후에는 <strong>Epsilon Data Management</strong>의 원격 Contractor로 약 4년간 일하며 <em class="hl">고려대학교 응용통계학 석사</em> 과정을 병행했습니다.</p>
+        <p>이후 Java · PHP 백엔드 개발자로 전환해 제노코어비에스를 거쳐, 현재 <strong>랩지노믹스 IT팀 선임</strong>으로 근무하고 있습니다. 지난 6년 10개월 동안 <em class="hl">'데이터가 안정적으로 흐르는 시스템'</em>을 만드는 일에 집중해 왔습니다.</p>
+        <p>유전자 분석 장비에서 실시간으로 흘러 들어오는 데이터, 고객의 주문·결제 트랜잭션, ERP 연동, 수십만 건의 광고 성과 리포트까지 — 도메인은 달랐지만 본질은 하나였습니다. <em class="hl">"데이터 흐름과 상태를 어떻게 안전하게 설계할 것인가?"</em></p>
+      </div>
+      <div class="traits">
+        <div class="trait reveal"><div class="trait-icon">⚙️</div><div class="trait-lbl">시스템 설계 중심</div><div class="trait-txt">기술 결정보다 흐름과 상태를 먼저 설계합니다</div></div>
+        <div class="trait reveal d1"><div class="trait-icon">📊</div><div class="trait-lbl">통계 기반 사고</div><div class="trait-txt">응용통계학 석사 (GPA 4.35), 데이터 중심 접근법</div></div>
+        <div class="trait reveal d2"><div class="trait-icon">🌐</div><div class="trait-lbl">글로벌 역량</div><div class="trait-txt">미국 18개월 근무·연수, TOEIC 935</div></div>
+        <div class="trait reveal d3"><div class="trait-icon">🔒</div><div class="trait-lbl">신뢰성 우선</div><div class="trait-txt">오류 0건·가용성 99%+를 코드가 아닌 구조로 달성</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ METRICS · id:section-metrics · 6개 지표 (3×2) · 배경: --s-met (blue) ══ -->
+<section id="section-metrics">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a1)">// 01. impact</p>
+    <div class="metrics-grid">
+      <div class="sc reveal"><div class="sc-n">4+</div><div class="sc-l">Java 백엔드 개발 경력</div><div class="sc-s">총 개발 경력 7년+ (2017~)</div></div>
+      <div class="sc reveal d1"><div class="sc-n">95%</div><div class="sc-l">처리 시간 단축</div><div class="sc-s">결과지 20분 → 1분 이내 (Gaia)</div></div>
+      <div class="sc reveal d2"><div class="sc-n">46%</div><div class="sc-l">인프라 비용 절감</div><div class="sc-s">AWS 리팩토링 + Docker CI/CD</div></div>
+      <div class="sc reveal"><div class="sc-n">70%</div><div class="sc-l">수작업 자동화</div><div class="sc-s">리포트 자동 생성 (제노코어비에스)</div></div>
+      <div class="sc reveal d1"><div class="sc-n">6건+</div><div class="sc-l">핵심 프로젝트 납품</div><div class="sc-s">전사 시스템 6개 신규 구축·운영</div></div>
+      <div class="sc reveal d2"><div class="sc-n">99%+</div><div class="sc-l">서비스 가용성</div><div class="sc-s">ELB + Nginx 이중화 구성</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PROJECTS · id:section-projects · Featured(가로형) 2 + Standard(그리드) 4 = 6건 · 배경: --s-proj (violet) ══ -->
+<section id="section-projects">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a2)">// 02. projects</p>
+    <h2 class="stitle">주요 프로젝트</h2>
+    <div class="pf-row" role="group" aria-label="프로젝트 필터">
+      <button class="pf-btn" data-filter="all">전체</button>
+      <button class="pf-btn" data-filter="backend">백엔드</button>
+      <button class="pf-btn" data-filter="infra">인프라 / DevOps</button>
+    </div>
+    <div class="proj-grid">
+
+      <!-- ★ Featured 1: Array LIMS (가로형) -->
+      <div class="pc-feat reveal" data-type="backend">
+        <div class="pc-feat-l">
+          <div class="pc-feat-num">01</div>
+          <div class="pc-feat-tag">Featured</div>
+        </div>
+        <div class="pc-feat-r">
+          <div class="pc-top">
+            <div><div class="pc-name">Array LIMS</div><div class="pc-period">2024.07 – 2025.02 · 랩지노믹스</div></div>
+            <span class="pc-tag">실무 · 시스템 설계</span>
+          </div>
+          <p class="pc-desc">GeneTitan 유전자 분석 장비의 대용량 실험 데이터를 실시간 수집·동기화하는 Microarray LIMS 신규 구축. Run 상태를 QUEUED → RUNNING → COMPLETED / FAILED / RETRY로 명시적 State 관리. CompletableFuture 비동기 파이프라인 + 독립 스레드 풀 분리로 장비 응답성 유지. GlobalExceptionHandler + BusinessException 계층으로 장비 통신 / 저장소 / 권한 예외를 일원화 처리. Azure OAuth2 SSO + Spring Security로 권한·메뉴 ACL 구성.</p>
+          <div class="bdgs">
+            <span class="bdg">Java</span><span class="bdg">Spring Boot</span><span class="bdg">RESTful API</span><span class="bdg">WebSocket</span><span class="bdg">CompletableFuture</span><span class="bdg">Azure OAuth2</span><span class="bdg">Spring Security</span><span class="bdg">AOP</span><span class="bdg">MS SQL Server</span><span class="bdg">Thymeleaf</span>
+          </div>
+          <div class="pc-res">
+            <p class="res">운영 환경 동기화 오류 0건 달성 (방어 로직 완비)</p>
+            <p class="res">GlobalExceptionHandler + BusinessException으로 예외 흐름 일원화</p>
+            <p class="res">CompletableFuture 병렬 처리로 장비 응답성 유지하며 처리량 확대</p>
+            <p class="res">QA 감사 대응 AOP Audit 로깅 시스템 구축</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ★ Featured 2: Gaia Report Web (가로형) -->
+      <div class="pc-feat reveal" data-type="backend">
+        <div class="pc-feat-l">
+          <div class="pc-feat-num">02</div>
+          <div class="pc-feat-tag">Featured</div>
+        </div>
+        <div class="pc-feat-r">
+          <div class="pc-top">
+            <div><div class="pc-name">Gaia Report Web</div><div class="pc-period">2025.07 – 2025.08 · 랩지노믹스</div></div>
+            <span class="pc-tag">실무 · 백엔드</span>
+          </div>
+          <p class="pc-desc">수작업으로 생성·전달하던 유전자 분석 결과지 프로세스를 완전 대체하는 사내 웹 플랫폼. 역할(Role) 단위가 아닌 메뉴·기능 단위 RBAC / Menu ACL 설계로 조직 개편 시 권한 변경이 유연하도록 구현. @Audited 어노테이션 기반 AOP Audit 시스템으로 사용자 행위·데이터 변경 이력 자동 추적. 결과지 생성·권한·Audit·다운로드를 독립 모듈로 분리해 응집도/결합도 유지.</p>
+          <div class="bdgs">
+            <span class="bdg">Java</span><span class="bdg">Spring Boot</span><span class="bdg">Spring Security</span><span class="bdg">RBAC / Menu ACL</span><span class="bdg">AOP Audit</span><span class="bdg">모듈화 아키텍처</span><span class="bdg">MS SQL Server</span><span class="bdg">Thymeleaf</span><span class="bdg">Maven</span>
+          </div>
+          <div class="pc-res">
+            <p class="res">결과지 처리 시간 95% 단축 (평균 20분 → 1분 이내)</p>
+            <p class="res">메뉴 단위 RBAC — 조직 변경 시 코드 수정 없이 권한 재구성 가능</p>
+            <p class="res">결과지 누락·전달 오류 가능성 대폭 감소</p>
+            <p class="res">모듈화 아키텍처로 향후 기능 추가 시에도 응집도/결합도 유지</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard 3: COS -->
+      <div class="pc reveal" data-type="backend">
+        <div class="pc-top"><div><div class="pc-name">COS – 주문·결제 백오피스</div><div class="pc-period">2024.03 – 2024.06 · 랩지노믹스</div></div><span class="pc-tag">실무 · 도메인 설계</span></div>
+        <p class="pc-desc">파편화된 주문·결제를 통합하는 Admin 백오피스 신규 설계. 주문 상태 전이를 State Machine으로 명시화해 비정합 주문 원천 차단(트랜잭션 원자성 보장). 주문 스냅샷 + 이벤트 소싱 모델로 현재 상태 조회와 전체 이력 추적 동시 지원.</p>
+        <div class="bdgs"><span class="bdg">Java</span><span class="bdg">Spring Boot</span><span class="bdg">State Machine</span><span class="bdg">이벤트 소싱</span><span class="bdg">AOP</span><span class="bdg">MS SQL Server</span><span class="bdg">GitHub+rsync CI/CD</span></div>
+        <div class="pc-res"><p class="res">주문 처리 시간 약 30% 단축</p><p class="res">State Machine으로 비정합 주문 원천 차단</p><p class="res">이벤트 소싱으로 완전한 변경 이력 추적</p></div>
+      </div>
+
+      <!-- Standard 4: LESS -->
+      <div class="pc reveal d1" data-type="backend">
+        <div class="pc-top"><div><div class="pc-name">LESS – ERP 연동 플랫폼</div><div class="pc-period">2024.04 – 2024.05 · 랩지노믹스</div></div><span class="pc-tag">실무 · 백엔드</span></div>
+        <p class="pc-desc">수작업 정산·등록 업무를 ERP와 완전 자동화하는 웹 플랫폼. 연동 전·후 이중 Validation으로 불완전 데이터의 ERP 반영을 구조적으로 차단. 실패 시 트랜잭션 롤백 + 원인 분류 + 재시도 패턴으로 운영자 개입 최소화.</p>
+        <div class="bdgs"><span class="bdg">Java</span><span class="bdg">Spring Boot</span><span class="bdg">트랜잭션 관리</span><span class="bdg">재시도 패턴</span><span class="bdg">데이터 정합성</span><span class="bdg">MS SQL Server</span><span class="bdg">jQuery</span></div>
+        <div class="pc-res"><p class="res">반복 업무 약 40% 절감</p><p class="res">이중 Validation으로 ERP 데이터 정합성 보장</p><p class="res">트랜잭션 롤백 + 재시도로 장애 자동 복구</p></div>
+      </div>
+
+      <!-- Standard 5: IB Project (신규 추가) -->
+      <div class="pc reveal" data-type="backend">
+        <div class="pc-top"><div><div class="pc-name">IB – PHR 기반 추천 플랫폼</div><div class="pc-period">2022.08 – 2023.07 · 제노코어비에스</div></div><span class="pc-tag">실무 · 백엔드</span></div>
+        <p class="pc-desc">개인건강기록(PHR) 및 유전자 데이터 기반 맞춤형 영양제·보험 추천 서비스 구축. KCP 결제 모듈 연동 시 결제 요청·결과·재시도·환불을 원자적 트랜잭션으로 설계. ClipSoft 템플릿 + 데이터 매핑 계층 분리로 코드 배포 없이 리포트 변경 가능한 구조 채택.</p>
+        <div class="bdgs"><span class="bdg">PHP</span><span class="bdg">JavaScript</span><span class="bdg">Docker</span><span class="bdg">KCP 결제 모듈</span><span class="bdg">MySQL</span><span class="bdg">카카오 알림톡</span><span class="bdg">Apache</span><span class="bdg">rsync CI/CD</span></div>
+        <div class="pc-res"><p class="res">수작업 리포트 생성 시간 70% 절감</p><p class="res">결제 완료율 개선, 결제 오류율 감소</p><p class="res">카카오 알림톡 자동화로 고객 응대 효율 향상</p></div>
+      </div>
+
+      <!-- Standard 6: AWS Infra -->
+      <div class="pc reveal d1" data-type="infra">
+        <div class="pc-top"><div><div class="pc-name">AWS 인프라 리팩토링</div><div class="pc-period">2024.01 – 진행 중 · 랩지노믹스</div></div><span class="pc-tag">실무 · 인프라/DevOps</span></div>
+        <p class="pc-desc">한국/미국 법인 포함 다수 웹사이트 인프라 전면 개선. EC2 리사이징 + 불필요 리소스 정리, ELB + Nginx 이중화(단일 장애점 제거), Redis 캐시 도입, Docker + CI/CD 파이프라인 구축으로 비용·안정성·배포 속도 동시 개선.</p>
+        <div class="bdgs"><span class="bdg">AWS EC2/S3/ELB</span><span class="bdg">Docker</span><span class="bdg">Docker Compose</span><span class="bdg">Nginx</span><span class="bdg">Redis (캐싱)</span><span class="bdg">GitHub+rsync CI/CD</span><span class="bdg">Java</span><span class="bdg">PHP</span></div>
+        <div class="pc-res"><p class="res">운영 비용 46% 절감 (EC2 리사이징 + 공용 리소스 통합)</p><p class="res">ELB + Nginx 이중화 → 가용성 99% 이상 달성</p><p class="res">오류 50건+ 수정 및 CI/CD 자동화로 휴먼 에러 제거</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SKILLS · id:section-skills · 배경: --s-skill (emerald) ══ -->
+<section id="section-skills">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a3)">// 03. skills</p>
+    <h2 class="stitle">기술 스택</h2>
+    <div class="skill-rows">
+      <div class="skill-row reveal"><span class="skill-cat">Backend</span><div class="sbs"><span class="sb core">Java</span><span class="sb core">Spring Boot</span><span class="sb core">Spring Security</span><span class="sb core">RESTful API 설계</span><span class="sb">Spring MVC</span><span class="sb">AOP</span><span class="sb">CompletableFuture</span><span class="sb">MyBatis</span><span class="sb">PHP</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">설계 패턴</span><div class="sbs"><span class="sb arch">State Machine</span><span class="sb arch">GlobalExceptionHandler</span><span class="sb arch">RBAC / Menu ACL</span><span class="sb arch">이벤트 소싱</span><span class="sb arch">재시도 패턴</span><span class="sb arch">모듈화 아키텍처</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">Database</span><div class="sbs"><span class="sb">MS SQL Server</span><span class="sb">MySQL</span><span class="sb">Redis (캐싱)</span><span class="sb">Oracle SQL</span><span class="sb">트랜잭션 관리</span><span class="sb">DB 인덱스 최적화</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">DevOps</span><div class="sbs"><span class="sb">AWS (EC2 · S3 · ELB)</span><span class="sb">Docker</span><span class="sb">Docker Compose</span><span class="sb">Nginx</span><span class="sb">GitHub + rsync CI/CD</span><span class="sb">Linux 서버 관리</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">Frontend</span><div class="sbs"><span class="sb">Thymeleaf</span><span class="sb">JavaScript</span><span class="sb">jQuery</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">Data/Stats</span><div class="sbs"><span class="sb">SAS (Certified ×4)</span><span class="sb">Oracle SQL</span><span class="sb">VBA 자동화</span><span class="sb">통계 분석</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">Tools</span><div class="sbs"><span class="sb">Git</span><span class="sb">Gradle</span><span class="sb">Maven</span><span class="sb">IntelliJ IDEA</span><span class="sb">Postman</span></div></div>
+      <div class="skill-row reveal"><span class="skill-cat">Studying</span><div class="sbs"><span class="sb study">Kafka</span><span class="sb study">Kubernetes</span><span class="sb study">JPA / Hibernate</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CAREER · id:section-career · 배경: --s-car (indigo) ══ -->
+<section id="section-career">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a4)">// 04. experience</p>
+    <h2 class="stitle">경력 사항</h2>
+    <div class="timeline">
+
+      <div class="tl-item now reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-p">2023.12 – 현재</div>
+        <div class="tl-co">(주)랩지노믹스</div>
+        <div class="tl-role">선임 · IT팀</div>
+        <ul class="tl-ul">
+          <li>GeneTitan 연동 Array LIMS 신규 구축 — WebSocket · CompletableFuture · Azure OAuth2 SSO · GlobalExceptionHandler · AOP Audit</li>
+          <li>유전자 분석 결과지 플랫폼 Gaia Report Web 구축 — RBAC/Menu ACL · 모듈화 아키텍처, 처리 시간 95% 단축</li>
+          <li>주문·결제 백오피스 COS 설계 — State Machine + 이벤트 소싱 적용, 처리 시간 30% 단축</li>
+          <li>ERP 연동 자동화 플랫폼 LESS 개발 — 이중 Validation + 트랜잭션 롤백 + 재시도 패턴, 반복 업무 40% 절감</li>
+          <li>AWS 인프라 리팩토링 — EC2/ELB/Nginx 이중화, Redis, Docker CI/CD 구축, 운영 비용 46% 절감 · 가용성 99%+</li>
+          <li>자사 웹사이트(한국/미국 법인 포함) 유지보수 및 레거시 PHP/Java 코드 리팩토링 (오류 50건+ 수정)</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-p">2022.02 – 2023.11</div>
+        <div class="tl-co">(주)제노코어비에스</div>
+        <div class="tl-role">주임 · AI분석개발팀</div>
+        <ul class="tl-ul">
+          <li>PHR 기반 개인화 영양제·보험 추천 플랫폼 신규 구축 (PHP · JavaScript · Docker · MySQL)</li>
+          <li>유전자 분석 결과 + 설문 데이터 기반 개인화 추천 알고리즘 및 KCP 결제 모듈 연동</li>
+          <li>ClipSoft 기반 리포트 자동 생성 시스템 구축 — 수작업 시간 70% 절감, 결제 완료율 개선</li>
+          <li>카카오 알림톡 연계를 통한 고객 커뮤니케이션 자동화</li>
+          <li>Open API 및 협력사 API 연동으로 실시간 상품 정보 수집·관리</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-p">2018.06 – 2022.04</div>
+        <div class="tl-co">Epsilon Data Management, LLC</div>
+        <div class="tl-role">Contractor · Technology Team</div>
+        <ul class="tl-ul">
+          <li>Oracle SQL 기반 대용량 데이터 추출 + VBA 자동화로 20여 건 맞춤형 광고 성과 보고서 운영</li>
+          <li>고객사 Invoice 성과 분석 및 월별 예산 제안서 작성 — 예산 추정 정확도 75% 달성</li>
+          <li>고려대학교 응용통계학 석사 병행 수료 (학점 4.35 / 4.5 · Bayesian inference 논문)</li>
+          <li>SearchForce의 Epsilon 합병 후에도 원격 Contractor로 고용 지속 (우수 성과 인정)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ EDUCATION · id:section-education (신설) · 배경: --s-edu (cyan) ══ -->
+<section id="section-education">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a6)">// 05. education & credentials</p>
+    <h2 class="stitle">학력 및 자격</h2>
+    <div class="edu-grid">
+
+      <!-- 왼쪽: 학력 타임라인 -->
+      <div class="edu-list">
+        <div class="edu-item reveal">
+          <div class="edu-school">고려대학교 세종캠퍼스</div>
+          <div class="edu-deg">응용통계학 석사</div>
+          <div class="edu-per">2019.03 – 2021.02 &nbsp;·&nbsp; 학점 4.35 / 4.5</div>
+          <div class="edu-det">통계학 이론 및 베이지안 추론에 기반한 데이터 분석 역량을 심화. 실무의 데이터 기반 의사결정과 수학적 모델링에 활용하고 있습니다.</div>
+          <div class="edu-note">논문: Bayesian inference for hidden stage with distributed time delay</div>
+        </div>
+        <div class="edu-item reveal">
+          <div class="edu-school">대구대학교</div>
+          <div class="edu-deg">전산통계학과 학사 &nbsp;(복수전공: 경영학과)</div>
+          <div class="edu-per">2011.03 – 2017.02 &nbsp;·&nbsp; 학점 4.1 / 4.5</div>
+          <div class="edu-det">전산통계학과 경영학을 복수전공하며 개발과 비즈니스 양면의 사고 체계를 형성. 소프트웨어 개발, 알고리즘, 통계 분석을 함께 학습했습니다.</div>
+          <div class="edu-note">병역: 육군 / 병장 만기전역 (2012.07 – 2014.04)</div>
+        </div>
+      </div>
+
+      <!-- 오른쪽: 자격·활동 -->
+      <div class="cred-col">
+
+        <div>
+          <div class="cred-lbl">SAS 자격증 (4건)</div>
+          <div class="cert-grid">
+            <div class="cert reveal"><div class="cert-nm">SAS Certified Predictive Modeler Using SAS Enterprise Miner 13</div><div class="cert-org">SAS Institute · PMEM000721v13</div><div class="cert-dt">2016.08.18</div></div>
+            <div class="cert reveal d1"><div class="cert-nm">SAS Certified Advanced Programmer for SAS 9</div><div class="cert-org">SAS Institute · AP017864v9</div><div class="cert-dt">2016.07.19</div></div>
+            <div class="cert reveal d2"><div class="cert-nm">SAS Certified Statistical Business Analyst Using SAS 9</div><div class="cert-org">SAS Institute · SBARM001510v9</div><div class="cert-dt">2015.02.12</div></div>
+            <div class="cert reveal d3"><div class="cert-nm">SAS Certified Base Programmer for SAS 9</div><div class="cert-org">SAS Institute · BP050880v9</div><div class="cert-dt">2015.07.04</div></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cred-lbl">어학</div>
+          <div class="score-row">
+            <div class="score-card reveal">
+              <div class="score-num">935</div>
+              <div class="score-lbl">TOEIC Total</div>
+              <div class="score-sub">LC 495 &nbsp;·&nbsp; RC 440 &nbsp;·&nbsp; 2024.09.07</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cred-lbl">수상 및 활동</div>
+          <div class="west-card reveal">
+            <div class="west-title">🌏 한미 대학생 연수(WEST) 프로그램</div>
+            <div class="west-sub">2017.01 – 2018.06 &nbsp;·&nbsp; 국립국제교육원 선발 &nbsp;·&nbsp; 18개월 전 과정 수료</div>
+            <div class="west-det">POLY Languages Institute 4개월 집중 영어 후 SearchForce, Inc. (San Mateo, CA) 1년 기술팀 인턴십. 우수 성과를 인정받아 정규 채용 제안 → 귀국 후에도 2022년까지 약 5년간 원격 Contractor로 지속 근무.</div>
+          </div>
+          <div class="award-list">
+            <div class="award">제6기 창의적 학습공동체 대상 · 대구대학교 교무처 교육개발센터 (2012.08)</div>
+            <div class="award">2014학년도 제2학기 영어능력경시대회 10위 · 대구대학교 외국어교육센터 (2014.11)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CONTACT · id:section-contact ══ -->
+<section id="section-contact">
+  <div class="ctr pad">
+    <p class="kicker" style="color:var(--a1)">// 06. contact</p>
+    <h2 class="stitle">연락처</h2>
+    <p class="contact-sub">새로운 기회에 열려 있습니다. 편하게 연락 주세요.</p>
+    <div class="contact-grid">
+      <div class="cc cc-email reveal" role="button" tabindex="0" aria-label="이메일 복사"><div class="cc-icon">📧</div><div class="cc-type">Email</div><div class="cc-val">your@email.com</div><div class="cc-hint">클릭하면 복사</div></div>
+      <div class="cc cc-github reveal d1" role="button" tabindex="0" aria-label="GitHub"><div class="cc-icon">🐙</div><div class="cc-type">GitHub</div><div class="cc-val">github.com/YOUR-USERNAME</div><div class="cc-hint">링크 이동</div></div>
+      <div class="cc cc-blog reveal d2" role="button" tabindex="0" aria-label="Blog"><div class="cc-icon">📝</div><div class="cc-type">Blog</div><div class="cc-val">기술 블로그</div><div class="cc-hint">링크 이동</div></div>
+      <div class="cc cc-linkedin reveal d3" role="button" tabindex="0" aria-label="LinkedIn"><div class="cc-icon">💼</div><div class="cc-type">LinkedIn</div><div class="cc-val">LinkedIn 프로필</div><div class="cc-hint">링크 이동 (선택)</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer-main">
+  © 2026 손준혁 &nbsp;·&nbsp; Designed &amp; Built by 손준혁 &nbsp;·&nbsp; Inspired by Salient (ThemeNectar)
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  /* ── 1. THEME ── */
+  var root=document.documentElement,tbtn=document.getElementById('theme-toggle');
+  var mq=window.matchMedia('(prefers-color-scheme:dark)'),userSet=false;
+  function applyTheme(dark){
+    root.setAttribute('data-theme',dark?'dark':'light');
+    tbtn.textContent=dark?'☀️':'🌙';
+    tbtn.setAttribute('aria-label',dark?'라이트 모드로 전환':'다크 모드로 전환');
+  }
+  applyTheme(root.getAttribute('data-theme')==='dark');
+  tbtn.addEventListener('click',function(){userSet=true;applyTheme(root.getAttribute('data-theme')!=='dark');});
+  mq.addEventListener('change',function(e){if(!userSet)applyTheme(e.matches);});
+
+  /* ── 2. TYPING ── */
+  var tyEl=document.getElementById('typing-text');
+  var txt='Backend Developer · 4+ Years';
+  var i=0;
+  function typeIt(){if(i<=txt.length){tyEl.textContent=txt.slice(0,i++);setTimeout(typeIt,i===1?600:62);}}
+  setTimeout(typeIt,800);
+
+  /* ── 3. SCROLL REVEAL ── */
+  if('IntersectionObserver' in window){
+    var ro=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el=e.target;el.classList.add('visible');ro.unobserve(el);
+          setTimeout(function(){el.classList.remove('reveal','d1','d2','d3');},700);
+        }
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+  }
+
+  /* ── 4. PROJECT FILTER ── */
+  function filterProj(f){
+    document.querySelectorAll('.pf-btn').forEach(function(b){b.classList.toggle('active',b.dataset.filter===f);});
+    document.querySelectorAll('.pc-feat').forEach(function(c){
+      var show=f==='all'||c.dataset.type===f;
+      c.style.display=show?'grid':'none';
+    });
+    document.querySelectorAll('.pc').forEach(function(c){
+      var show=f==='all'||c.dataset.type===f;
+      c.style.display=show?'flex':'none';
+      if(c.dataset.type==='infra') c.classList.toggle('solo',show);
+    });
+  }
+  filterProj('all');
+  document.querySelectorAll('.pf-btn').forEach(function(b){
+    b.addEventListener('click',function(){filterProj(this.dataset.filter);});
+  });
+
+  /* ── 5. TOAST ── */
+  function showToast(msg){
+    var t=document.getElementById('toast');
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2600);
+  }
+
+  /* ── 6. CONTACT ── */
+  var EMAIL='your@email.com'; /* ← 실제 이메일 주소로 교체 */
+  function openUrl(url){window.open(url,'_blank','noopener,noreferrer');}
+
+  document.querySelector('.cc-email').addEventListener('click',function(){
+    navigator.clipboard?navigator.clipboard.writeText(EMAIL).then(function(){showToast('이메일 주소가 복사되었습니다 ✓');}).catch(function(){showToast(EMAIL);}):showToast(EMAIL);
+  });
+  document.querySelector('.cc-github').addEventListener('click',function(){openUrl('https://github.com/YOUR-USERNAME');/* ← 교체 */});
+  document.querySelector('.cc-blog').addEventListener('click',function(){openUrl('https://YOUR-BLOG-URL');/* ← 교체 */});
+  document.querySelector('.cc-linkedin').addEventListener('click',function(){openUrl('https://linkedin.com/in/YOUR-PROFILE');/* ← 교체 */});
+
+  document.querySelectorAll('.cc').forEach(function(c){
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}});
+  });
+  var rBtn=document.querySelector('.btn-resume');
+  if(rBtn) rBtn.addEventListener('click',function(e){
+    if(this.getAttribute('href')==='YOUR_RESUME.pdf'){e.preventDefault();showToast('이력서 파일 경로를 href에 연결해 주세요');}
+  });
+
+  /* ── 7. ACTIVE NAV ── */
+  if('IntersectionObserver' in window){
+    var nlinks=document.querySelectorAll('.nav-links a[href^="#"]');
+    var no=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting)nlinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+      });
+    },{threshold:0.35});
+    document.querySelectorAll('section[id]').forEach(function(s){no.observe(s);});
+  }
+
+})();
+</script>
+</body>
+</html>
